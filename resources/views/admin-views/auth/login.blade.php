@@ -19,26 +19,65 @@
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=1.0">
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/toastr.css">
 </head>
-
+<style>
+.background-walk-y {
+    background-repeat: no-repeat;
+    background-position: 0 0%;
+    background-size: 100%;
+}
+.absolute-bottom-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.text-light {
+    color: #f8f9fa!important;
+}
+.index-2 {
+    z-index: 2 !important;
+}
+.overlay-gradient-bottom:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: false;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.65) 100%);
+    z-index: 1;
+}
+.welcome-text {
+    font-size: 56px;
+    color: #fff;
+    opacity: 0.9;
+}
+</style>
 <body>
 <!-- ========== MAIN CONTENT ========== -->
 <main id="content" role="main" class="main">
-    <div class="position-fixed top-0 right-0 left-0 bg-img-hero"
-         style="height: 100%; background-image: url({{asset('public/assets/admin')}}/svg/components/login-background.png);">
-    </div>
 
-    <!-- Content -->
-    <div class="container py-5 py-sm-7">
-        <a class="d-flex justify-content-center mb-5" href="javascript:">
-            <img class="z-index-2"
-                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
-                 src="{{asset('storage/app/public/restaurant')}}/{{\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value}}" alt="Image Description" style="height: 100px;">
-        </a>
 
-        <div class="row justify-content-center">
-            <div class="col-md-7 col-lg-5">
-                <!-- Card -->
-                <div class="card card-lg mb-5">
+    <section class="section">
+        <div class="d-flex flex-wrap align-items-stretch">
+                <div class="col-lg-8 col-12 col-md-6 order-lg-1 order-1 min-vh-100 background-walk-y overlay-gradient-bottom" style="background-image: url({{asset('public/assets/admin/img/1.png')}}); background-color: #23110f">
+                    <div class="absolute-bottom-left index-2">
+                        <div class="text-light p-5 pb-2">
+                            <div class="mb-5 pb-3">
+                                <h1 class="mb-2 display-4 font-weight-bold welcome-text">{{__("welcome admin...!!")}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 pt-5 col-md-6 order-lg-2 min-vh-100 order-2 bg-white">
+                    <div class="p-4 m-3">
+
+                                <a class="d-flex justify-content-center mb-5" href="javascript:">
+                                    <img class="z-index-2"
+                                        onerror="this.src='{{asset('public/assets/admin/img/logo.png')}}'"
+                                        src="{{asset('storage/app/public/restaurant')}}/{{\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value}}" alt="Image Description" style="height: 100px;">
+                                    </a>
+                            <div class="card card-lg mb-5">
                     <div class="card-body">
                         <!-- Form -->
                         <form class="js-validate" action="{{route('admin.auth.login')}}" method="post">
@@ -53,14 +92,7 @@
                                         </a>
                                     </p>
                                 </div>
-                                {{--<a class="btn btn-lg btn-block btn-white mb-4" href="#">
-                                    <span class="d-flex justify-content-center align-items-center">
-                                      <img class="avatar avatar-xss mr-2"
-                                           src="{{asset('public/assets/admin')}}/svg/brands/google.svg" alt="Image Description">
-                                      Sign in with Google
-                                    </span>
-                                </a>
-                                <span class="divider text-muted mb-4">OR</span>--}}
+        
                             </div>
 
                             <!-- Form Group -->
@@ -132,11 +164,12 @@
                         </div>
                     @endif
                 </div>
-                <!-- End Card -->
-            </div>
+
+                    </div>
+                </div>
         </div>
-    </div>
-    <!-- End Content -->
+    </section>
+
 </main>
 <!-- ========== END MAIN CONTENT ========== -->
 
