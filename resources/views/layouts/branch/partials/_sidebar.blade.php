@@ -3,7 +3,7 @@
         class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered  ">
         <div class="navbar-vertical-container">
             <div class="navbar-vertical-footer-offset">
-                <div class="navbar-brand-wrapper justify-content-between">
+                <div class="navbar-brand-wrapper justify-content-between logo-header">
                     <!-- Logo -->
 
                     @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)

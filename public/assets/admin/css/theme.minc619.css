@@ -2882,14 +2882,16 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #FC6A57;
-    border-color: #FC6A57
+    /* background-color: #FC6A57;
+    border-color: #FC6A57 */
+    background-color: #FFCB2F;
+    border-color: #FFCB2F
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #FC6A57;
-    border-color: #FC6A57
+    background-color: #e3ac48;
+    border-color: #e3ac48
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -13939,15 +13941,15 @@ input[type=number] {
 }
 
 .navbar .nav-link:hover {
-    color: #FC6A57;
+    color: #01B091;
 }
 
 .navbar .nav-link.active {
-    color: #FC6A57
+    color: #01B091
 }
 
 .navbar .active > .nav-link, .navbar .nav-link.active, .navbar .nav-link.show, .navbar .show > .nav-link {
-    color: #FC6A57
+    color: #01B091
 }
 
 .navbar .nav-pills .show > .nav-link {
@@ -14097,7 +14099,7 @@ input[type=number] {
 }
 
 .navbar-brand-logo {
-    height: 44px;
+    height: 75px;
     /*width: 100%;
     min-width: 6.5rem;*/
     max-width: 6.5rem
@@ -15789,6 +15791,7 @@ input[type=number] {
 
 .navbar-vertical .nav-link {
     color: #132144
+    /* color: #01B091; */
 }
 
 .navbar-vertical .nav-link.disabled {
@@ -15869,7 +15872,7 @@ input[type=number] {
 }
 
 .navbar-vertical .active .nav-indicator-icon, .navbar-vertical .nav-link:hover .nav-indicator-icon, .navbar-vertical .show > .nav-link > .nav-indicator-icon {
-    color: #FC6A57
+    color: #132144
 }
 
 .navbar-vertical .nav-compact, .navbar-vertical .nav-compact-icon {
@@ -16187,7 +16190,7 @@ input[type=number] {
 }
 
 .navbar-vertical-aside .navbar-vertical-aside-has-menu.show > .nav-link-toggle::before, .navbar-vertical-aside .navbar-vertical-aside-has-menu > .nav-link-toggle.active::before, .navbar-vertical-aside .navbar-vertical-aside-has-menu > .nav-link-toggle:hover::before {
-    background-color: #FC6A57
+    background-color: #01B091
 }
 
 .has-navbar-vertical-aside:not(.navbar-vertical-aside-mini-mode) .navbar-vertical .nav-tabs .navbar-vertical-aside-has-menu > .active.nav-link {
@@ -16560,7 +16563,9 @@ input[type=number] {
 .navbar-vertical-aside-show.navbar-vertical-aside-mini-mode .navbar-vertical-footer {
     display: none
 }
-
+.logo-header {
+    overflow: hidden;
+}
 @media (min-width: 576px) {
     .navbar-vertical.navbar-expand-sm {
         -ms-flex-flow: column;
@@ -17661,15 +17666,15 @@ input[type=number] {
 }
 
 .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .nav-sub .nav-link:hover, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .nav-sub .nav-link:hover {
-    color: #FC6A57
+    color: #01B091
 }
 
 .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu .active > .nav-link, .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu .nav-link.show, .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu .show > .nav-link, .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu.show .nav-sub .nav-link.active, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu .active > .nav-link, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu .nav-link.show, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu .show > .nav-link, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .navbar-vertical-aside-has-menu.show .nav-sub .nav-link.active {
-    color: #FC6A57
+    color: #01B091
 }
 
 .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .active .nav-indicator-icon, .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .nav-link:hover .nav-indicator-icon, .navbar-vertical-aside-compact-mini-mode .navbar-dark .navbar-nav .show > .nav-link > .nav-indicator-icon, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .active .nav-indicator-icon, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .nav-link:hover .nav-indicator-icon, .navbar-vertical-aside-mini-mode .navbar-dark .navbar-nav .show > .nav-link > .nav-indicator-icon {
-    color: #FC6A57
+    color: #01B091
 }
 
 .navbar-vertical-aside-compact-mini-mode .navbar-dark .nav-compact-icon .navbar-vertical-aside-has-menu.show > .nav-link .nav-icon {
@@ -22013,7 +22018,7 @@ label.btn {
 }
 
 .nav-item.active .nav-link {
-    color: #FC6A57
+    color: #01B091
 }
 
 .nav-icon {

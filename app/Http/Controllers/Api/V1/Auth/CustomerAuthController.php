@@ -34,7 +34,7 @@ class CustomerAuthController extends Controller
     public function check_email(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:users'
+            'phone' => 'required|unique:users'
         ]);
 
         if ($validator->fails()) {
@@ -45,20 +45,20 @@ class CustomerAuthController extends Controller
         if (BusinessSetting::where(['key'=>'email_verification'])->first()->value){
             $token = rand(1000, 9999);
             DB::table('email_verifications')->insert([
-                'email' => $request['email'],
+                'email' => $request['phone'],
                 'token' => $token,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            Mail::to($request['email'])->send(new EmailVerification($token));
+            //Mail::to($request['email'])->send(new EmailVerification($token));
 
             return response()->json([
-                'message' => 'Email is ready to register',
+                'message' => 'Mobile number is ready to register',
                 'token' => 'active'
             ], 200);
         }else{
             return response()->json([
-                'message' => 'Email is ready to register',
+                'message' => 'Mobile number is ready to register',
                 'token' => 'inactive'
             ], 200);
         }
@@ -67,14 +67,14 @@ class CustomerAuthController extends Controller
     public function verify_email(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required'
+            'phone' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $verify = EmailVerifications::where(['email' => $request['email'], 'token' => $request['token']])->first();
+        $verify = EmailVerifications::where(['email' => $request['phone'], 'token' => $request['token']])->first();
 
         if (isset($verify)) {
             $verify->delete();
@@ -121,7 +121,7 @@ class CustomerAuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'phone' => 'required',
             'password' => 'required|min:6'
         ]);
 
@@ -129,14 +129,30 @@ class CustomerAuthController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+        $phone = $request->input('phone');
 
-        if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('RestaurantCustomerAuth')->accessToken;
-            return response()->json(['token' => $token], 200);
+        $userCheckphone = User::where('phone', '=', $phone)->first();
+
+        if ($userCheckphone) {
+            
+            //$userCheckemail = User::where('phone', '=', $email)->first();
+
+            $data = [
+                'email' => $userCheckphone->email,
+                'password' => $request->password
+            ];
+
+            if (auth()->attempt($data)) {
+                $token = auth()->user()->createToken('RestaurantCustomerAuth')->accessToken;
+                return response()->json(['token' => $token], 200);
+            } else {
+                $errors = [];
+                array_push($errors, ['code' => 'auth-001', 'message' => 'Unauthorized.']);
+                return response()->json([
+                    'errors' => $errors
+                ], 401);
+            }
+
         } else {
             $errors = [];
             array_push($errors, ['code' => 'auth-001', 'message' => 'Unauthorized.']);
@@ -144,5 +160,18 @@ class CustomerAuthController extends Controller
                 'errors' => $errors
             ], 401);
         }
+
+        
+
+        // if (auth()->attempt($data)) {
+        //     $token = auth()->user()->createToken('RestaurantCustomerAuth')->accessToken;
+        //     return response()->json(['token' => $token], 200);
+        // } else {
+        //     $errors = [];
+        //     array_push($errors, ['code' => 'auth-001', 'message' => 'Unauthorized.']);
+        //     return response()->json([
+        //         'errors' => $errors
+        //     ], 401);
+        // }
     }
 }
